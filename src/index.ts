@@ -1,11 +1,16 @@
 import fs from 'fs';
 import path from 'path';
 
+type ChunkFile = {
+  type: string;
+  fileName: string;
+}
+
 export default function preloadChunks() {
   return {
     name: 'vite-preload-chunks-plugin',
-    generateBundle(outputOptions, bundle) {
-      const chunks = [];
+    generateBundle(outputOptions: { dir: string }, bundle: Record<string, ChunkFile>) {
+      const chunks: string[] = [];
       Object.keys(bundle).forEach(fileName => {
         const file = bundle[fileName];
         if (['chunk', 'asset'].includes(file.type)) {
