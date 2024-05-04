@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 
-export default function PreloadChunks() {
+export default function preloadChunks() {
   return {
-    name: 'chunk-metadata-plugin',
+    name: 'vite-preload-chunks-plugin',
     generateBundle(outputOptions, bundle) {
       const chunks = [];
       Object.keys(bundle).forEach(fileName => {

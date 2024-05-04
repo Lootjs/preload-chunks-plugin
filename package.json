@@ -1,11 +1,14 @@
 {
   "name": "vite-plugin-preload-chunks",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/Lootjs/preload-chunks-plugin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lootjs/preload-chunks-plugin.git"
+  },
   "description": "Vite plugin for generating key chunks map for preloading by external projects",
   "main": "./dist/vite-preload-chunks.js",
   "module": "./dist/vite-preload-chunks.js",
