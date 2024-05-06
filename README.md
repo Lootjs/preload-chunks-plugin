@@ -12,7 +12,7 @@ npm i vite-plugin-preload-chunks --save-dev
 
 In your Vite configuration, import the plugin:
 ```javascript
-import { preloadChunks } from 'vite-plugin-preload-chunks';
+import preloadChunks from 'vite-plugin-preload-chunks';
 ```
 
 Then invoke the plugin:
