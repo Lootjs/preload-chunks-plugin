@@ -1,6 +1,6 @@
 # Preload chunks plugin for Vite
 
-## Vite Plugin generating key chunks map for preloading by external projects
+Vite Plugin generating key chunks map for preloading by external projects
 
 ### Installation
 
