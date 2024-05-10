@@ -22,3 +22,16 @@ plugins: [
 ]
 
 ```
+
+
+You can specify which chunks should be preloaded:
+```javascript
+const config = {
+  matchers: ['vue', 'datepicker']
+}
+
+plugins: [
+  preloadChunks(config),
+]
+
+```

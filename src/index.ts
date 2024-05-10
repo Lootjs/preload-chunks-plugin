@@ -6,7 +6,15 @@ type ChunkFile = {
   fileName: string;
 }
 
-export default function preloadChunks() {
+type PreloadChunksConfig = {
+  matchers: string[]
+}
+
+const defaultMatchers = ['index-', 'vendor-'];
+
+export default function preloadChunks(config?: PreloadChunksConfig) {
+  const matchers = config?.matchers || defaultMatchers;
+
   return {
     name: 'vite-preload-chunks-plugin',
     generateBundle(outputOptions: { dir: string }, bundle: Record<string, ChunkFile>) {
@@ -15,8 +23,8 @@ export default function preloadChunks() {
         const file = bundle[fileName];
         if (['chunk', 'asset'].includes(file.type)) {
           const chunkName = file.fileName;
-          // console.log(chunkName);
-          if (chunkName.indexOf('index-') !== -1 || chunkName.indexOf('vendor-') !== -1) {
+
+          if (matchers.find(matcher => chunkName.indexOf(matcher) !== -1)) {
             chunks.push(file.fileName);
           }
         }
