@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-preload-chunks",
   "type": "module",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "files": [
     "dist"
   ],
@@ -10,12 +10,13 @@
     "url": "git+https://github.com/Lootjs/preload-chunks-plugin.git"
   },
   "description": "Vite plugin for generating key chunks map for preloading by external projects",
-  "main": "./dist/vite-preload-chunks.js",
-  "module": "./dist/vite-preload-chunks.js",
+  "main": "./dist/vite-preload-chunks.cjs.js",
+  "module": "./dist/vite-preload-chunks.esm.js",
   "exports": {
     ".": {
       "types": "dist/vite-preload-chunks.d.ts",
-      "import": "./dist/vite-preload-chunks.js"
+      "import": "./dist/vite-preload-chunks.js",
+      "require": "./dist/vite-preload-chunks.cjs.js"
     }
   },
   "scripts": {
@@ -32,10 +33,10 @@
     "rollup": "^4.1.1",
     "rollup-plugin-dts": "^6.1.0",
     "tslib": "^2.6.2",
-    "typescript": "^5.1.1"
+    "typescript": "*"
   },
   "peerDependencies": {
     "@rollup/plugin-typescript": "^11.1.5",
-    "typescript": "^5.1.1"
+    "typescript": "*"
   }
 }

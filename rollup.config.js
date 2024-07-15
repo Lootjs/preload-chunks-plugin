@@ -6,10 +6,16 @@ import { dts } from "rollup-plugin-dts";
 export default [
     {
         input: 'src/index.ts',
-        output: {
-            file: 'dist/vite-preload-chunks.js',
-            format: 'esm'
-        },
+        output: [
+            {
+                file: 'dist/vite-preload-chunks.esm.js',
+                format: 'esm'
+            },
+            {
+                file: 'dist/vite-preload-chunks.cjs.js',
+                format: 'cjs'
+            }
+        ],
         plugins: [
             typescript(),
             commonjs({

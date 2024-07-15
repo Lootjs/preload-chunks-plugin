@@ -15,6 +15,10 @@ const defaultMatchers = ['index-', 'vendor-'];
 export default function preloadChunks(config?: PreloadChunksConfig) {
   const matchers = config?.matchers || defaultMatchers;
 
+  const shouldSaveChunk = (chunkName: string) => {
+    return matchers.find(matcher => chunkName.indexOf(matcher) !== -1 && !chunkName.endsWith('.map'))
+  }
+
   return {
     name: 'vite-preload-chunks-plugin',
     generateBundle(outputOptions: { dir: string }, bundle: Record<string, ChunkFile>) {
@@ -24,7 +28,7 @@ export default function preloadChunks(config?: PreloadChunksConfig) {
         if (['chunk', 'asset'].includes(file.type)) {
           const chunkName = file.fileName;
 
-          if (matchers.find(matcher => chunkName.indexOf(matcher) !== -1)) {
+          if (shouldSaveChunk(chunkName)) {
             chunks.push(file.fileName);
           }
         }
