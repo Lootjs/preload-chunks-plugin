@@ -1,6 +1,6 @@
-import type { PreloadManifest, PreloadResource } from './types';
+import type { PreloadManifest, PreloadResource } from './types.js';
 
-export type { PreloadManifest, PreloadResource, ResourceType } from './types';
+export type { PreloadManifest, PreloadResource, ResourceType } from './types.js';
 
 export type PrefetchOptions = {
   /** `prefetch` warms the cache for the next navigation. Default: `prefetch` */

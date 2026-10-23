@@ -1,7 +1,7 @@
 import type { Plugin, ResolvedConfig } from 'vite';
-import type { PreloadManifest, PreloadResource, ResourceType } from './types';
+import type { PreloadManifest, PreloadResource, ResourceType } from './types.js';
 
-export type { PreloadManifest, PreloadResource, ResourceType } from './types';
+export type { PreloadManifest, PreloadResource, ResourceType } from './types.js';
 
 // Derived from Plugin so the types match whichever bundler (Rollup or Rolldown) the installed Vite uses
 type OutputBundle = Parameters<Extract<Plugin['generateBundle'], Function>>[1];

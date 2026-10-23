@@ -16,7 +16,7 @@ async function buildFixture(options?: PreloadChunksOptions, config: InlineConfig
     ...config,
     build: {
       write: false,
-      rollupOptions: { input: { main: `${root}/index.html`, about: `${root}/about.html` } },
+      rolldownOptions: { input: { main: `${root}/index.html`, about: `${root}/about.html` } },
       ...config.build,
     },
   });
@@ -72,7 +72,7 @@ describe('preloadChunks', () => {
 
   it('does not emit the manifest for SSR builds', async () => {
     const { manifest } = await buildFixture(undefined, {
-      build: { ssr: `${root}/shared.js`, rollupOptions: {} },
+      build: { ssr: `${root}/shared.js`, rolldownOptions: {} },
     });
     expect(manifest).toBeUndefined();
   });
