@@ -1,32 +1,20 @@
-import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
-import commonjs from '@rollup/plugin-commonjs';
-import { dts } from "rollup-plugin-dts";
+import { dts } from 'rollup-plugin-dts';
+
+const inputs = ['index', 'client'];
+const external = ['vite'];
 
 export default [
-    {
-        input: 'src/index.ts',
-        output: [
-            {
-                file: 'dist/vite-preload-chunks.esm.js',
-                format: 'esm'
-            },
-            {
-                file: 'dist/vite-preload-chunks.cjs.js',
-                format: 'cjs'
-            }
-        ],
-        plugins: [
-            typescript(),
-            commonjs({
-                include: /node_modules/
-            }),
-            terser()
-        ],
-    },
-    {
-        input: "./src/index.ts",
-        output: { file: "dist/vite-preload-chunks.d.ts", format: "es" },
+    ...inputs.map(name => ({
+        input: `src/${name}.ts`,
+        external,
+        output: { file: `dist/${name}.js`, format: 'esm' },
+        plugins: [typescript()],
+    })),
+    ...inputs.map(name => ({
+        input: `src/${name}.ts`,
+        external,
+        output: { file: `dist/${name}.d.ts`, format: 'es' },
         plugins: [dts()],
-    }
+    })),
 ];
